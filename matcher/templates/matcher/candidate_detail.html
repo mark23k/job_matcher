@@ -1,0 +1,43 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/candidate_detail.css' %}">
+  <div class="candidate-detail-container">
+    <div class="candidate-header">
+      <h1>{{ candidate.name }}</h1>
+      <p class="candidate-status {% if candidate.active %}active{% else %}inactive{% endif %}">
+        {% if candidate.active %}Active{% else %}Inactive{% endif %}
+      </p>
+    </div>
+
+    <div class="candidate-info">
+      <div class="info-row">
+        <strong>Email:</strong> <span>{{ candidate.email }}</span>
+      </div>
+      <div class="info-row">
+        <strong>Phone:</strong> <span>{{ candidate.phone_number }}</span>
+      </div>
+      <div class="info-row">
+        <strong>Tags:</strong> <span>
+          {% for tag in candidate.tags.all %}
+            {{ tag.name }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </span>
+      </div>
+      <div class="info-row">
+        <strong>Uploaded:</strong> <span>{{ candidate.uploaded_at }}</span>
+      </div>
+    </div>
+
+    <div class="candidate-actions">
+      {% if user.is_superuser%}
+        <a href="{% url 'edit_candidate' candidate_id=candidate.id %}" class="btn edit-btn">Edit Candidate</a>
+      {% endif %}
+      {% if candidate.cv %}
+        <a href="{{ candidate.cv.url }}" target="_blank" class="btn download-btn">Download CV</a>
+      {% else %}
+        <p class="no-cv">No CV uploaded.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

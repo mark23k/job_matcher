@@ -1,0 +1,85 @@
+/* admin_dashboard.css - Custom styling for Admin Dashboard */
+
+/* Container for the admin dashboard */
+.admin-dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Header styling */
+.admin-dashboard-header {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+
+
+/* Dashboard content layout */
+.admin-dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Options panel */
+.admin-dashboard-options {
+    width: 100%;
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.admin-dashboard-options h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.admin-dashboard-options ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-dashboard-options ul li {
+    margin-bottom: 10px;
+}
+
+.dashboard-link {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-link:hover {
+    background-color: #e6f0ff;
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: 15px;
+    }
+
+    .admin-dashboard-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .admin-dashboard-options {
+        max-width: 100%;
+    }
+}

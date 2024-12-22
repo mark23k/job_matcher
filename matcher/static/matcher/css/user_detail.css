@@ -1,0 +1,86 @@
+/* user_detail.css */
+
+/* General Container Styling */
+.user-detail-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.user-detail-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* User Information Styling */
+.user-info {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.user-info p {
+    margin: 5px 0;
+}
+
+.user-info strong {
+    color: #333;
+}
+
+/* Actions Section */
+.user-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-detail-container {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .user-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+}

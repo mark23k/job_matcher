@@ -1,0 +1,26 @@
+# Python
+*.pyc
+__pycache__/
+
+# Django
+*.log
+media/
+
+# Django migrations
+matcher/migrations/*
+
+# Environment variables
+.env
+
+# Exclude settings.py file
+job_matcher/settings.py
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Python virtual environment folder (if you're using one)
+venv/

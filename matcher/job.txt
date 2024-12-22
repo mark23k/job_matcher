@@ -1,0 +1,132 @@
+Job Matcher
+Functional spec
+
+Introduction
+We have a free service to match jobseekers with potential employers. It currently works on a manual basis, with jobseekers submitting their CVs to us, and we compile a weekly email summarizing each candidate and their skills, which is sent to a WhatsApp group.
+
+This process is manual and tedious, and we want to build a system that can automate most of these steps.
+System Requirements
+The system consists of several aspects, each of which will be dealt with in a separate section.
+Development Tools
+The system should be built for deployment to a Linux server, though you can develop on any platform of your choosing.
+•	Development language: Any of the following:
+o	Go
+o	C#
+o	Java
+o	Python
+•	Database: Postgres
+•	Web server: Apache / Nginx / Self-hosted
+•	Source control: Git on BitBucket (repository will be supplied)
+
+Authentication
+The system should only be available to authorized users. 
+Users should be able to change their passwords.
+Some users (designated Admin users) can access all parts of the site. Other users have read-only access to view and search the candidate CVs.
+At this time, we will not be focusing on scoped authorization; we may assume that any authenticated user can access any part of the system.
+
+Uploading CVs
+There should be an interface for uploading CVs in Word or PDF format. We must record the candidate’s name, email, phone no, date of uploading, and an “Active” field to designate whether the candidate is still in the market. We should have the ability to tag CVs with multiple tags, e.g. “accounting”, “senior”, “remote”, “part-time”, etc. These tags should be maintainable by the users.
+Bonus (optional): Use an AI API to summarize the CV into a text field.
+
+Compiling Mails
+Instead of sending the summary by Whatsapp, we will use MailChimp/ConstantContact/other commercial bulk email service. The system should have an option to “Send Candidate Mail Summary”. This will open a dialog showing a list of all the new CVs that have not yet been sent out. The user can check or uncheck CVs as they choose. When they are finished, the system will generate a mail shot containing the summaries of all the CVs selected and show it to the user as a preview. On approval, it will be sent out using the API of our chosen bulk email service.
+
+Viewing the CVs
+The recipients of the emails will see the summaries, which also include a link to see the detailed CVs. They can click on the link, which will download the candidate’s CV. 
+
+Searching the database
+All users should be able to search the candidate database by tag, by name, and/or keyword from the summary.
+
+
+
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.contrib.postgres.search import SearchVector, SearchVectorField
+from django.core.exceptions import ValidationError
+import re
+
+class CustomUser(AbstractUser):
+    """Custom user model to add additional fields."""
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.username
+
+class Tag(models.Model):
+    """Tag model to categorize candidates based on skills, job types, etc."""
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Candidate(models.Model):
+    """Candidate model to store CV information and details."""
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15)
+    tags = models.ManyToManyField(Tag, blank=True)  # Many-to-many relationship, blank=True means optional
+    active = models.BooleanField(default=True)  # Whether the candidate is still in the job market
+    cv = models.FileField(upload_to='cvs/', null=True, blank=True, verbose_name="Curriculum Vitae")  # File upload for the CV
+    summary = models.TextField(null=True, blank=True)  # A field to store the summary of the CV
+    uploaded_at = models.DateTimeField(auto_now_add=True)  # Timestamp when the CV is uploaded
+    search_vector = SearchVectorField(null=True, blank=True)  # Store the search vector explicitly in the database
+
+    def __str__(self):
+        return self.name
+
+    def clean(self):
+        """Custom validation for phone number format."""
+        phone_pattern = re.compile(r'^\+?[1-9]\d{1,14}$')  # E.164 format
+        if self.phone_number and not phone_pattern.match(self.phone_number):
+            raise ValidationError(f"Phone number '{self.phone_number}' is not valid. It must be in E.164 format.")
+
+    # Adding full-text search vector (for advanced search functionality)
+    class Meta:
+        indexes = [
+            models.Index(fields=['name', 'email', 'summary']),
+            models.Index(fields=['search_vector']),  # Index for search_vector to optimize searches
+        ]
+
+    @property
+    def search_vector_property(self):
+        return SearchVector('name', 'tags__name', 'summary')  # Combine relevant fields for full-text search
+
+    def save(self, *args, **kwargs):
+        """Override save method to update search_vector field on save."""
+        self.search_vector = self.search_vector_property
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def search(cls, query):
+        """Perform full-text search."""
+        return cls.objects.annotate(search=SearchVector('name', 'tags__name', 'summary')).filter(search=query)
+
+
+
+
+
+
+job_matcher/
+├── job_matcher/
+│   ├── _init_.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+├── matcher/
+│   │   ├── static/
+│   │   │   ├── matcher/
+│   │   │   │   ├── .css files
+│   │   ├── templates/
+│   │   │   ├── matcher/
+│   │   │   │   ├── .html files
+│   ├── _init_.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── utils.py
+│   ├── urls.py
+│   ├── views.py
+│   ├── migrations/
+│       ├── _init_.py
+├── manage.py

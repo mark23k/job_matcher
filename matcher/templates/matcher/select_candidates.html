@@ -1,0 +1,34 @@
+<!-- select_candidates.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}Select Candidates{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "matcher/css/select_candidate.css" %}">
+<div class="select-candidates-container">
+    <h1 class="page-title">Select Candidates</h1>
+
+    <form method="POST" class="candidate-selection-form">
+        {% csrf_token %}
+        <h3 class="section-title">Choose candidates for action:</h3>
+
+        <div class="candidate-list">
+            {% for candidate in candidates %}
+                <div class="candidate-item">
+                    <input type="checkbox" id="candidate-{{ candidate.id }}" name="candidates" value="{{ candidate.id }}">
+                    <label for="candidate-{{ candidate.id }}">
+                        <strong>{{ candidate.name }}</strong> 
+                        <span class="candidate-email">({{ candidate.email }})</span>
+                    </label>
+                </div>
+            {% empty %}
+                <p class="no-candidates-message">No candidates available to display.</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Summarize</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

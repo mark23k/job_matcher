@@ -1,0 +1,34 @@
+<!-- regular_dashboard.html -->
+{% extends 'matcher/base_generic.html' %}
+{% load static %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "matcher/css/regular_dashboard.css" %}">
+<div class="dashboard-container">
+
+    <div class="dashboard-content">
+        <div class="dashboard-section">
+            <h2>Quick Links</h2>
+            <ul class="dashboard-links">
+                <li>
+                    <a href="{% url 'user_profile' %}" class="dashboard-link">
+                        <span class="link-icon">&#128100;</span> View Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'candidate_list' %}" class="dashboard-link">
+                        <span class="link-icon">&#128196;</span> View Candidates
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'tag_list' %}" class="dashboard-link">
+                        <span class="link-icon">&#128204;</span> All Tags
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

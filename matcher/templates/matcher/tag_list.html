@@ -1,0 +1,30 @@
+<!--tag-list.html-->
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static "matcher/css/tag_list.css" %}">
+<div class="tag-list-container">
+    <h1 class="page-title">Tag List</h1>
+
+    {% if tags %}
+    <ul class="tag-list">
+        {% for tag in tags %}
+        <li class="tag-item">
+            <span class="tag-name">{{ tag.name }}</span>
+            {% if user.is_superuser %}
+              <a href="{% url 'confirm_delete_tag' tag.id %}" class="btn btn-danger btn-sm">Delete</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-tags-message">No tags available.</p>
+    {% endif %}
+
+    {% if user.is_superuser %}
+        <div class="add-tag-link">
+            <a href="{% url 'add_tag' %}" class="btn btn-primary">Add New Tag</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

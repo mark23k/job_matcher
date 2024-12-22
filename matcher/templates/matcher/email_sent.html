@@ -1,0 +1,13 @@
+<!-- email_sent.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/email_sent.css' %}">
+
+  <div class="email-sent-container">
+    <h1>Email Sent Successfully!</h1>
+    <p>The email with the CV summaries has been successfully sent to the selected recipients.</p>
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+  </div>
+{% endblock %}

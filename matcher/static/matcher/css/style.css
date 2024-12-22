@@ -1,0 +1,174 @@
+/* Header Styling */
+header {
+    background-color: #333;  /* Dark background for a more professional look */
+    padding: 15px 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Navbar links container */
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Default: space between elements */
+    width: 100%;
+    align-items: center;
+}
+
+/* Navbar links */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Default: Align to the left */
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links li a:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+/* User Info button always visible */
+.user-info {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.user-info-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    width: 45px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #444;
+    transition: background-color 0.3s ease;
+}
+
+.user-info-button:hover {
+    background-color: #555;
+}
+
+/* Hamburger Menu (3 lines) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it stays on top */
+}
+
+.hamburger-menu .bar {
+    height: 3px;
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Drop-down Menu Styling */
+.dropdown-menu {
+    display: none; /* Hide by default */
+    background-color: #333;
+    position: absolute;
+    top: 60px; /* Position below navbar */
+    left: 0;  /* Align it to the right */
+    z-index: 1000;
+    width: 200px; /* Restrict width */
+}
+
+.dropdown-menu.active {
+    display: block; /* Show when active */
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: start; /* Align items to the left */
+}
+
+.dropdown-menu ul li {
+    margin: 10px 0;
+}
+
+.dropdown-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 20px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+/* Show the hamburger menu and dropdown on smaller screens */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* Show hamburger menu */
+    }
+
+    .nav-links {
+        display: none; /* Hide regular nav links on small screens */
+    }
+}
+
+/* Center navbar links on larger screens */
+@media (min-width: 1024px) {
+    .nav-container {
+        justify-content: center; /* Center the navbar container */
+    }
+
+    .nav-links {
+        justify-content: center;  /* Center the navbar items (Home, Profile, Logout) */
+    }
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}

@@ -1,0 +1,98 @@
+/* add_tags.css - Custom styling for Add Tag page */
+
+/* Container for centering content */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px; /* Give some spacing from the top */
+}
+
+/* Heading styling */
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add space between form elements */
+}
+
+form label {
+    font-size: 16px;
+    color: #333;
+}
+
+form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #007bff; /* Professional blue button */
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Message styling */
+.message {
+    background-color: #54db71;
+    color: #3a2b9e;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Link styling */
+.link-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    form button {
+        padding: 10px 15px;
+    }
+
+    .link-container a {
+        font-size: 14px;
+    }
+}

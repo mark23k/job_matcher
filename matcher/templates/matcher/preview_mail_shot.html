@@ -1,0 +1,31 @@
+<!-- preview_mail_shot.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<div class="email-preview-container">
+    <link rel="stylesheet" href="{% static 'matcher/css/preview_mail_shot.css' %}">
+
+    <h1>Email Preview</h1>
+
+    <form method="POST" class="email-preview-form">
+        {% csrf_token %}
+        <h3>Summarized CVs:</h3>
+
+        <div class="candidate-list">
+            {% for summary in summaries %}
+            <div class="candidate-item">
+                <strong>{{ summary.candidate_name }}</strong>
+                <p>{{ summary.summary|default:"No summary provided." }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" name="send_email" class="btn btn-primary">Send Email</button>
+            <button type="submit" name="back_to_select" class="btn btn-secondary">Back to Select Candidates</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

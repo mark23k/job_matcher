@@ -1,0 +1,27 @@
+<!--user_profile.html-->
+{% extends 'base_generic.html' %}
+
+{% load static %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "matcher/css/user_profile.css" %}">
+<div class="user-profile-container">
+    
+
+    <div class="user-profile-details">
+        <div class="user-card">
+            <div class="profile-info">
+                <h2>{{ user.first_name }} {{ user.last_name}} </h2>
+                <p><strong>UserName:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Phone:</strong> {{ user.profile.phone_number }}</p>
+            </div>
+            <div class="profile-actions">
+                <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

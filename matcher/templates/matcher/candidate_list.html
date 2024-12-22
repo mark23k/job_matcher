@@ -1,0 +1,56 @@
+<!-- candidate_list.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/candidate_list.css' %}">
+  <div class="candidate-list-container">
+    <h1>Candidate List</h1>
+    
+    <!-- Search Form -->
+    <div class="search-container">
+      <form method="GET" action="">
+        <input type="text" name="search" placeholder="Search candidates" value="{{ search_query }}" class="search-input">
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </div>
+    
+    {% if user.is_superuser %}
+      <div class="add-candidate-link">
+        <a href="{% url 'add_candidate' %}" class="btn add-btn">Add Candidate</a>
+      </div>
+    {% endif %}
+    
+    <!-- Candidate Table -->
+    <table class="candidate-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for candidate in candidates %}
+          <tr>
+            <td>{{ candidate.name }}</td>
+            <td>{{ candidate.email }}</td>
+            <td>{{ candidate.phone_number }}</td>
+            <td>{{ candidate.active|yesno:"Yes,No" }}</td>
+            <td>
+              <a href="{% url 'candidate_detail' candidate.id %}" class="btn view-btn">View</a>
+              {% if user.is_superuser %}
+                | <a href="{% url 'confirm_delete_candidate' candidate.id %}" class="btn delete-btn">Delete</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5">No candidates found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

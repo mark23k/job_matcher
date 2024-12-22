@@ -1,0 +1,41 @@
+<!-- admin_dashboard.html -->
+{% extends 'matcher/base_generic.html' %}
+{% load static %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/admin_dashboard.css' %}">
+<div class="admin-dashboard-container">
+    <div class="admin-dashboard-header">
+    </div>
+
+    <div class="admin-dashboard-content">
+        <div class="admin-dashboard-options">
+            <h2>Manage Content</h2>
+            <ul>
+                <li>
+                    <a href="{% url 'add_candidate' %}" class="dashboard-link">Add Candidate</a>
+                </li>
+                <li>
+                    <a href="{% url 'add_tag' %}" class="dashboard-link">Add Tag</a>
+                </li>
+                <li>
+                    <a href="{% url 'candidate_list' %}" class="dashboard-link">View Candidates</a>
+                </li>
+                <li>
+                    <a href="{% url 'tag_list' %}" class="dashboard-link">Manage Tags</a>
+                </li>
+                <li>
+                    <a href="{% url 'select_candidates' %}" class="dashboard-link">Select Candidates</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}" class="dashboard-link">Register New User</a>
+                </li>
+                <li>
+                    <a href="{% url 'users_list' %}" class="dashboard-link">All Users</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

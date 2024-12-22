@@ -1,0 +1,116 @@
+/* Overall container */
+.edit-candidate-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header */
+  .edit-candidate-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .edit-candidate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Form field containers */
+  .form-fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  /* Style each form field */
+  .edit-candidate-form input,
+  .edit-candidate-form select,
+  .edit-candidate-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* On focus, highlight input fields */
+  .edit-candidate-form input:focus,
+  .edit-candidate-form select:focus,
+  .edit-candidate-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Error styling */
+  .form-errors {
+    margin-top: 20px;
+    background-color: #ffe5e5;
+    padding: 15px;
+    border: 1px solid #f5c2c2;
+    border-radius: 5px;
+  }
+  
+  .form-errors ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .form-errors li {
+    color: #d9534f;
+    font-size: 0.9rem;
+  }
+  
+  /* Submit Button */
+  .save-btn {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .save-btn:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .edit-candidate-container {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    .edit-candidate-container h1 {
+      font-size: 1.5rem;
+    }
+  
+    .form-fields {
+      grid-template-columns: 1fr;
+    }
+  
+    .save-btn {
+      width: 100%;
+    }
+  }
+  

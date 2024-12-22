@@ -1,0 +1,134 @@
+/* Overall Container for Select Candidates page */
+.select-candidates-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Title */
+.page-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Candidate List Styling */
+.candidate-list {
+    margin-bottom: 30px;
+}
+
+/* Individual Candidate Items */
+.candidate-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.candidate-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkbox and Label Styling */
+.candidate-item input[type="checkbox"] {
+    margin-right: 15px;
+    accent-color: #007bff; /* Modern blue for the checkbox */
+}
+
+.candidate-item label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.candidate-email {
+    font-size: 14px;
+    color: #888;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+/* Message for no candidates available */
+.no-candidates-message {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+}
+
+/* Form Actions (Submit Button) */
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .select-candidates-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 26px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .candidate-item {
+        padding: 10px;
+    }
+
+    .candidate-item label {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+    }
+}

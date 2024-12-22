@@ -1,0 +1,26 @@
+<!--add_candidate.html-->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/add_candidate.css' %}">
+  <h1>Add Candidate</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Render the candidate form fields -->
+    {{ form.as_p }}
+
+    {% if form.errors %}
+      <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+    <button type="submit">Add Candidate</button>
+  </form>
+{% endblock %}

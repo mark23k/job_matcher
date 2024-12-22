@@ -1,0 +1,18 @@
+<!-- home.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %}Home - Candidate Management System{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/home.css' %}">
+  <div class="home-container">
+    <h2>Welcome to the Candidate Management System</h2>
+
+    {% if user.is_authenticated %}
+      <p class="welcome-message">Welcome back, <strong>{{ user.username }}</strong>!</p>
+      <a href="{% url 'candidate_list' %}" class="btn btn-primary">Go to Candidate List</a>
+    {% else %}
+      <p class="login-prompt">You are not logged in. Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a>.</p>
+    {% endif %}
+  </div>
+{% endblock %}

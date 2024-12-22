@@ -1,0 +1,31 @@
+<!--user_detail.html-->
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/user_detail.css' %}">
+  <div class="user-detail-container">
+    <h1>User Detail</h1>
+    
+    <!-- Display User Information -->
+    <div class="user-detail">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>First Name:</strong> {{ user.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+      <p><strong>Groups:</strong> 
+        {% for group in user.groups.all %}
+          {{ group.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+          No groups assigned.
+        {% endfor %}
+      </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="user-actions">
+      <a href="{% url 'users_list' %}" class="btn btn-secondary">Back to Users List</a>
+      <a href="{% url 'confirm_delete_user' user.id %}" class="btn btn-danger">Delete User</a>
+    </div>
+  </div>
+{% endblock %}

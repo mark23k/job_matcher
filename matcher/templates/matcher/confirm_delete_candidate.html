@@ -1,0 +1,18 @@
+<!-- confirm_delete_candidate.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/confirm_delete_candidate.css' %}">
+  <div class="confirm-delete-container">
+    <h1>Are you sure you want to delete the candidate "{{ candidate.name }}"?</h1>
+    
+    <div class="confirm-delete-actions">
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn confirm-delete-btn">Yes, Delete</button>
+      </form>
+      <a href="{% url 'candidate_list' %}" class="btn cancel-btn">Cancel</a>
+    </div>
+  </div>
+{% endblock %}

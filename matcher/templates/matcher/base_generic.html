@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matcher</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'matcher/css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="nav-container">
+            <!-- Navbar links -->
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+
+            <!-- User info button always visible -->
+            <li class="user-info">
+                <a href="{% url 'user_profile' %}" class="user-info-button">
+                    <span class="username">{{ user.username }}</span>
+                </a>
+            </li>
+
+            <!-- Hamburger menu for small screens -->
+            <div class="hamburger-menu" id="hamburger-menu" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Drop-down Menu that will appear when clicking the hamburger icon -->
+    <div class="dropdown-menu" id="dropdown-menu">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('dropdown-menu');
+        menu.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- register.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block title %}Register New User{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/register.css' %}">
+<div class="register-container">
+    <form method="post" class="register-form">
+        {% csrf_token %}
+        <h2 class="form-heading">Register</h2>
+        
+        {% if form.errors %}
+            <div class="error-message">
+                <p>There were errors with your submission. Please correct them below.</p>
+            </div>
+        {% endif %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+{% endblock %}

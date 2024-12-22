@@ -1,0 +1,32 @@
+<!-- edit_candidate.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/edit_candidate.css' %}">
+
+  <div class="edit-candidate-container">
+    <h1>Edit Candidate: {{ candidate.name }}</h1>
+    
+    <form method="POST" enctype="multipart/form-data" class="edit-candidate-form">
+      {% csrf_token %}
+      <div class="form-fields">
+        {{ form.as_p }}
+      </div>
+
+      {% if form.errors %}
+        <div class="form-errors">
+          <ul>
+            {% for field in form %}
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <button type="submit" class="btn save-btn">Save Changes</button>
+    </form>
+  </div>
+{% endblock %}

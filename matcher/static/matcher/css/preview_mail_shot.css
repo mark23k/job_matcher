@@ -1,0 +1,61 @@
+.email-preview-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.email-preview-container h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.candidate-list {
+    margin: 20px 0;
+}
+
+.candidate-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.candidate-item strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.candidate-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,28 @@
+<!-- add_tags.html -->
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'matcher/css/add_tags.css' %}">
+  <div class="container">
+    <h1>Add Tag</h1>
+    <form method="POST">
+      {% csrf_token %}
+      
+      <!-- Render the tag form fields -->
+      {{ form.as_p }}
+
+      {% if message %}
+        <div class="message">
+          <p>{{ message }}</p>
+        </div>
+      {% endif %}
+      
+      <button type="submit">Add Tag</button>
+    </form>
+    
+    <div class="link-container">
+      <a href="{% url 'tag_list' %}">View all Tags</a>
+    </div>
+  </div>
+{% endblock %}

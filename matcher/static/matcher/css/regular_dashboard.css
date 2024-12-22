@@ -1,0 +1,122 @@
+/* dashboard.css - Styling for Regular Dashboard */
+
+/* General Layout */
+.dashboard-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+.dashboard-header h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Section Titles */
+.dashboard-section h2 {
+    font-size: 24px;
+    color: #0078D7;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #E8E8E8;
+    padding-bottom: 5px;
+}
+
+/* Links */
+.dashboard-links {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-links li {
+    margin-bottom: 15px;
+}
+
+.dashboard-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0078D7;
+    font-size: 18px;
+    padding: 10px 15px;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.dashboard-link:hover {
+    background-color: #0078D7;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 120, 215, 0.3);
+}
+
+.link-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Recent Activity */
+.recent-activity {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activity li {
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    background-color: #FAFAFA;
+}
+
+.recent-activity li .activity-icon {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #28A745;
+}
+
+/* No Activity */
+.no-activity {
+    font-size: 16px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 28px;
+    }
+
+    .dashboard-section h2 {
+        font-size: 20px;
+    }
+
+    .dashboard-link {
+        font-size: 16px;
+    }
+
+    .recent-activity li {
+        font-size: 14px;
+    }
+}
